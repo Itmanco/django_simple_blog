@@ -2,7 +2,7 @@
 
 {% block pregroup %}
  <div class="col-md-4">
-     <div class="content">
+     <div class="container pt-5">
         {% if user.is_authenticated %}
             <h2>Welcome Back!
                 <a href="{% url 'posts:for_user' username=user.username %}">
@@ -14,8 +14,8 @@
          <p>Welcome to the groups page!</p>
     </div>
     {% if user.is_authenticated %}
-     <a href="{% url 'groups:create' %}" class="btn btn-md btn-fill btn-warning">
-         <span class="glyphicon glyphicon-plus-sign">Create New Group!</span>
+     <a href="{% url 'groups:create' %}">
+         <button type="button" class="btn btn-outline-warning">Create New Group!</button>
      </a>
      {% endif %}
  </div>
@@ -30,11 +30,11 @@
                         {{group.description_html|safe}}
                         <div class="row">
                             <div class="col-md-4">
-                                <span class="badge">{{group.members.count}}</span>
+                                <span class="badge bg-secondary rounded-pill">{{group.members.count}}</span>
                                      member{{group.members.count|pluralize}}
                             </div>
                             <div class="col-md-4">
-                                <span class="badge">{{group.posts.count}}</span>
+                                <span class="badge bg-secondary rounded-pill">{{group.posts.count}}</span>
                                      post{{group.posts.count|pluralize}}
                             </div>
                         </div>
