@@ -5,13 +5,6 @@ import misaka
 from django.contrib.auth import get_user_model
 from groups.models import Group
 
-# from pathlib import Path
-# BASE_DIR = Path(__file__).resolve().parent.parent
-# print("--------->>>>>post.models.before<<<<<<----------")
-# print(BASE_DIR)
-# # C:\Users\itman\Udemy\DjangoCourse\django_lectures\simple_social_clone\simplesocial
-# print("--------->>>>>post.models.after<<<<<<----------")
-
 User = get_user_model()
 # Create your models here.
 
