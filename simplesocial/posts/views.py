@@ -66,6 +66,8 @@ class DeletePost(LoginRequiredMixin, SelectRelatedMixin, generic.DeleteView):
     template_name = 'post_confirm_delete.html'
     success_url = reverse_lazy('posts:all')
 
+    # TODO: delete post image
+
     def get_queryset(self):
         queryset = super().get_queryset()
         return queryset.filter(user_id=self.request.user.id)
