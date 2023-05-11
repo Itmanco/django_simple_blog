@@ -14,6 +14,8 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+MEDIA_ROOT = ''
+MEDIA_URL = ''
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 
 # Quick-start development settings - unsuitable for production
@@ -41,6 +43,7 @@ INSTALLED_APPS = [
     'posts',
     'groups',
     'bootstrap5',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [

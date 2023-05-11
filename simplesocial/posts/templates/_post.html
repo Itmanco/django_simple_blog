@@ -1,6 +1,13 @@
 <div class="post media">
     <h3>{{post.message_html|safe}}</h3>
     <div class="media-body">
+        {% if post.image %}
+            <a href="{{ post.image.url }}">
+                <img src="{{ post.image.url }}" class="img-thumbnail" width="304" height="236">
+            </a>
+        {% endif %}
+    </div>
+    <div class="media-body">
 <!--        <strong>{{post.user.username}}</strong>-->
         <h5 class="media-heading">
             <span class="username">

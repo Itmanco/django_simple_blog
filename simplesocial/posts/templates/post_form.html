@@ -2,9 +2,10 @@
 {% load bootstrap5 %}
 {% block post_content %}
     <h4>Create a new Post</h4>
-    <form id="postForm" action="{% url 'posts:create' %}" method="post">
+    <form id="postForm" action="{% url 'posts:create' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {% bootstrap_form form %}
+        {{form.media}}
         <input type="submit" value="Post" class="btn btn-primary btn-large">
     </form>
 {% endblock %}

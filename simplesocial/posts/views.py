@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.template.context_processors import request
 from django.urls import reverse_lazy
 from django.views import generic
 from . import models
@@ -48,7 +49,7 @@ class PostDetail(SelectRelatedMixin, generic.DetailView):
 
 class CreatePost(LoginRequiredMixin, SelectRelatedMixin, generic.CreateView):
 
-    fields = ('message', 'group')
+    fields = ('message', 'group', 'image')
     model = models.Post
     template_name = 'post_form.html'
 
