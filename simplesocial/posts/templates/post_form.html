@@ -5,7 +5,10 @@
     <form id="postForm" action="{% url 'posts:create' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {% bootstrap_form form %}
-        {{form.media}}
+        <div class="container-fluid">
+            {{form.media}}
+        </div>
+
         <input type="submit" value="Post" class="btn btn-primary btn-large">
     </form>
 {% endblock %}
