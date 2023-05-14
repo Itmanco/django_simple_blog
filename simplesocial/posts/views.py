@@ -49,7 +49,7 @@ class PostDetail(SelectRelatedMixin, generic.DetailView):
 
 class CreatePost(LoginRequiredMixin, SelectRelatedMixin, generic.CreateView):
 
-    fields = ('message', 'group', 'image')
+    fields = ('message', 'image', 'group')
     model = models.Post
     template_name = 'post_form.html'
 
