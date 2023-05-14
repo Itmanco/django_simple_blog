@@ -1,5 +1,5 @@
 import os
-
+import sys
 from django.db import models
 from django.urls import reverse
 from django.conf import settings
@@ -7,6 +7,9 @@ import misaka
 from django.contrib.auth import get_user_model
 from groups.models import Group
 from ckeditor.fields import RichTextField
+from PIL import Image
+from io import BytesIO
+from django.core.files.uploadedfile import InMemoryUploadedFile
 
 User = get_user_model()
 # Create your models here.
@@ -26,7 +29,19 @@ class Post(models.Model):
 
     def save(self, *args, **kwargs):
         self.message_html = misaka.html(self.message)
-        super().save(*args, **kwargs)
+        if not self.id:
+            self.image = self.compressImage(self.image)
+        super(Post, self).save(*args, **kwargs)
+
+    def compressImage(self, uploadedImage):
+        imageTemproary = Image.open(uploadedImage)
+        outputIoStream = BytesIO()
+        imageTemproaryResized = imageTemproary.resize((1020, 573))
+        imageTemproary.save(outputIoStream, format='JPEG', quality=60)
+        outputIoStream.seek(0)
+        uploadedImage = InMemoryUploadedFile(outputIoStream, 'ImageField', "%s.jpg" % uploadedImage.name.split('.')[0],
+                                             'image/jpeg', sys.getsizeof(outputIoStream), None)
+        return uploadedImage
 
     def delete(self, *args, **kwargs):
         print("Deleting image" + self.image.path)
@@ -41,6 +56,5 @@ class Post(models.Model):
     class Meta:
         ordering = ['-created_at']
         unique_together = ['user', 'message']
-
 
 
