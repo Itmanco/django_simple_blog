@@ -4,7 +4,7 @@ from django.template.context_processors import request
 from django.urls import reverse_lazy
 from django.views import generic
 from . import models
-from . import forms
+from .forms import PostForm
 from django.http import Http404
 from braces.views import SelectRelatedMixin
 from django.contrib.auth import get_user_model
@@ -49,9 +49,10 @@ class PostDetail(SelectRelatedMixin, generic.DetailView):
 
 class CreatePost(LoginRequiredMixin, SelectRelatedMixin, generic.CreateView):
 
-    fields = ('message', 'image', 'group')
     model = models.Post
+    form_class = PostForm
     template_name = 'post_form.html'
+    # fields = ('message', 'image', 'group')
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
