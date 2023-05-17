@@ -25,6 +25,9 @@
             <a href="{% url 'posts:delete' pk=post.pk %}" title="delete" class="btn btn-simple">
                 <button type="button" id="delete_btn" class="btn btn-outline-danger">delete</button>
             </a>
+            <a href="{% url 'posts:edit' post.pk %}" class="btn btn-simple">
+                <button type="button" id="update_btn" class="btn btn-outline-danger">edit</button>
+            </a>
             {% endif %}
         </div>
     </div>

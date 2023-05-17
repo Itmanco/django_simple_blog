@@ -61,6 +61,16 @@ class CreatePost(LoginRequiredMixin, SelectRelatedMixin, generic.CreateView):
         return super().form_valid(form)
 
 
+class UpdatePost(generic.UpdateView):
+    model = models.Post
+    template_name = 'post_update.html'
+    fields = ['message', 'image']
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(user_id=self.request.user.id)
+
+
 class DeletePost(LoginRequiredMixin, SelectRelatedMixin, generic.DeleteView):
     model = models.Post
     select_related = ('user', 'group')
@@ -73,6 +83,4 @@ class DeletePost(LoginRequiredMixin, SelectRelatedMixin, generic.DeleteView):
 
     def delete(self, *args, **kwargs):
         messages.success(self.request, 'Post Deleted')
-        print("Post Deleted")
-        print(kwargs)
         return super().delete(*args, **kwargs)

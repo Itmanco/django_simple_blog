@@ -4,7 +4,8 @@
 <div class="container pt-5">
     {% include "_post.html"%}
     <script>
-        document.getElementById('delete_btn').style.visibility = 'hidden'
+        document.getElementById('delete_btn').outerHTML="";
+        document.getElementById('update_btn').outerHTML="";
     </script>
 </div>
 
