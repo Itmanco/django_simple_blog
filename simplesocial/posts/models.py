@@ -29,7 +29,7 @@ class Post(models.Model):
 
     def save(self, *args, **kwargs):
         self.message_html = misaka.html(self.message)
-        if not self.id:
+        if not self.id and self.image:
             self.image = self.compressImage(self.image)
         super(Post, self).save(*args, **kwargs)
 
@@ -44,11 +44,11 @@ class Post(models.Model):
         return uploadedImage
 
     def delete(self, *args, **kwargs):
-        print("Deleting image" + self.image.path)
-        imageloc = self.image.path
-        if os.path.isfile(imageloc):
-            os.remove(imageloc)
-        super().delete(*args, **kwargs)
+        if self.image:
+            imageloc = self.image.path
+            if os.path.isfile(imageloc):
+                os.remove(imageloc)
+            super().delete(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse('posts:single', kwargs={'username': self.user.username, 'pk': self.pk})
