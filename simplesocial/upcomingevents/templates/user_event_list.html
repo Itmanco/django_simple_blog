@@ -1,0 +1,13 @@
+{% extends "event_base.html" %}
+{% block preevent %}
+<div class="col-md-4">
+    <h1>@{{event_user.username}}</h1>
+</div>
+{% endblock %}
+{% block event_content %}
+<div class="col-md-8">
+    {% for event in event_list %}
+    {% include "_event.html" %}
+    {% endfor %}
+</div>
+{% endblock %}

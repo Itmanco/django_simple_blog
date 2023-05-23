@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'accounts',
     'posts',
     'groups',
+    'upcomingevents',
     'bootstrap5',
     'ckeditor',
 ]

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="event-page">
+    <div class="container">
+        <div class="row">
+            {% block preevent %}{% endblock %}
+            {% block event_content %}{% endblock %}
+            {% block event_post %}{% endblock %}
+        </div>
+    </div>
+</div>
+{% endblock %}

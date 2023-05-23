@@ -1,0 +1,10 @@
+ p {
+    padding:5px;
+    border:1px solid black;
+    color:green;
+    font-size:24px;
+
+  }
+ #event_date{
+     display:inline;
+  }
