@@ -19,6 +19,7 @@ class UpcomingEvent(models.Model):
     def __str__(self):
         return self.message
 
+
     def save(self, *args, **kwargs):
         self.message_html = misaka.html(self.message)
         super(UpcomingEvent, self).save(*args, **kwargs)

@@ -1,12 +1,13 @@
 <div class="post media">
     <h6>
         <div class="alert alert-primary">
-            <strong><p id="event_date"></p></strong>{{event.message_html|safe}}<a href="#" class="alert-link">TODO:link the event details</a>.
+            <p id="p_event_date"><strong>{{ event.event_start_at|date:'m月 d日' }}</strong></p> <p id="p_event_message">{{ event.message_html|safe }}</p> <a href="#" class="alert-link">TODO:link the event details</a>.
+<!--            <strong>{{ event.event_start_at|date:'m月 d日' }}</strong>{{event.message_html|safe}}<a href="#" class="alert-link">TODO:link the event details</a>.-->
         </div>
     </h6>
     <script>
-        let loc_date = "{{ event.event_start_at|date:'m月 d日' }}"
-        loc_date = loc_date.replace(/[\r\n]/gm, '')
-        document.getElementById("event_date").innerHTML = loc_date;
+        var loc_msn = "{{ event.message_html|safe }}";
+        loc_msn = loc_msn.replace(/[\r\n]/gm, '');
+        document.getElementById("p_event_message").innerHTML = loc_msn;
     </script>
 </div>
