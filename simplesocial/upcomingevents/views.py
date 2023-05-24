@@ -39,7 +39,7 @@ class UserEvents(generic.ListView):
 
 
 class EventDetail(SelectRelatedMixin, generic.DetailView):
-    model = models.Post
+    model = models.UpcomingEvent
     select_related = ('user', 'group')
     template_name = 'event_detail.html'
 
@@ -50,7 +50,7 @@ class EventDetail(SelectRelatedMixin, generic.DetailView):
 
 class CreateEvent(LoginRequiredMixin, SelectRelatedMixin, generic.CreateView):
 
-    model = models.Post
+    model = models.UpcomingEvent
     form_class = EventForm
     template_name = 'post_form.html'
     # fields = ('message', 'image', 'group')

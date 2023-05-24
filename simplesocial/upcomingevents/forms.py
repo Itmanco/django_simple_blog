@@ -9,7 +9,7 @@ class EventForm(forms.ModelForm):
 
         widgets = {
             'message': forms.Textarea(attrs={'class': 'form-control'}),
-            'event_start_at': forms.DateTimeField(attrs={'class': 'form-control'}),
+            'event_start_at': forms.DateTimeInput(attrs={'class': 'form-control', 'type': "datetime-local"}),
             'group': forms.Select(attrs={'class': 'form-control'})
         }
 

@@ -1,7 +1,4 @@
- #p_event_date{
-     display:inline;
-     color:green;
-  }
  #p_event_message{
-    display:inline;
- }
+     display:inline;
+     color:red;
+  }
