@@ -19,11 +19,7 @@ class UpcomingEvent(models.Model):
     def __str__(self):
         return self.message
 
-
     def save(self, *args, **kwargs):
-        local = misaka.html(self.message)
-        print("¥¥¥¥  def save(self, *args, **kwargs): ¥¥¥¥¥")
-        print(local)
         self.message_html = misaka.html(self.message)
         super(UpcomingEvent, self).save(*args, **kwargs)
 

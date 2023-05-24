@@ -52,7 +52,7 @@ class CreateEvent(LoginRequiredMixin, SelectRelatedMixin, generic.CreateView):
 
     model = models.UpcomingEvent
     form_class = EventForm
-    template_name = 'post_form.html'
+    template_name = 'event_form.html'
     # fields = ('message', 'image', 'group')
 
     def form_valid(self, form):
