@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.contrib.auth import get_user_model
 from groups.models import Group
 from ckeditor.fields import RichTextField
@@ -22,6 +23,9 @@ class UpcomingEvent(models.Model):
     def save(self, *args, **kwargs):
         self.message_html = misaka.html(self.message)
         super(UpcomingEvent, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('upcomingevents:single', kwargs={'username': self.user.username, 'pk': self.pk})
 
     class Meta:
         ordering = ['-event_start_at']

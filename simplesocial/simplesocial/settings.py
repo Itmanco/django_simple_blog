@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'upcomingevents',
     'bootstrap5',
     'ckeditor',
+    "bootstrap_datepicker_plus",
 ]
 
 MIDDLEWARE = [

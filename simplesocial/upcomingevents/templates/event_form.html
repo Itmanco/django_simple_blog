@@ -5,6 +5,7 @@
     <form id="eventForm" action="{% url 'upcomingevents:create' %}" method="post" enctype="form-data">
         {% csrf_token %}
         {% bootstrap_form form %}
+        {{ form.media }}
         <input type="submit" value="Create" class="btn btn-primary btn-large">
     </form>
 {% endblock %}

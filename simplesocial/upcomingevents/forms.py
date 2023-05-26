@@ -1,5 +1,6 @@
 from django import forms
 from .models import UpcomingEvent
+from bootstrap_datepicker_plus.widgets import DatePickerInput
 
 
 class EventForm(forms.ModelForm):
@@ -9,7 +10,7 @@ class EventForm(forms.ModelForm):
 
         widgets = {
             'message': forms.Textarea(attrs={'class': 'form-control'}),
-            'event_start_at': forms.DateTimeInput(attrs={'class': 'form-control', 'type': "datetime-local"}),
+            'event_start_at': DatePickerInput(options={"format": "MM/DD/YYYY"}, attrs={'class': 'form-control'}),
             'group': forms.Select(attrs={'class': 'form-control'})
         }
 
